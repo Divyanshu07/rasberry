@@ -8,6 +8,7 @@ var express = require('express')
 , user = require('./routes/user')
 , http = require('http')
 , path = require('path');
+var gpio = require('rpi-gpio');
 
 var app = express();
 
@@ -40,16 +41,11 @@ server.on('listening', onListening);
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function(socket) {
-	socket.on('subscribe', function (data) {
-
+	gpio.setup(7, gpio.DIR_IN, readInput);
 		setInterval(function(){
-			var gpio = require('rpi-gpio');
-
-
-			gpio.setup(4, gpio.DIR_IN, readInput);
 
 			function readInput() {
-				gpio.read(4, function(err, value) {
+				gpio.read(7, function(err, value) {
 					socket.emit('value', value);
 				});
 			}
