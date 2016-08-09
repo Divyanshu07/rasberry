@@ -52,9 +52,6 @@ io.sockets.on('connection', function(socket) {
 		}, 5000);
 	});
 
-
-});
-
 //	var subscribe = io.of('/subscribe');
 
 //	subscribe.on('connection', function (socket) {
