@@ -33,7 +33,7 @@ app.get('/users', user.list);
 
 
 var server = http.createServer(app);
-server.listen(config.port);
+server.listen(3000);
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -71,5 +71,5 @@ io.sockets.on('connection', function(socket) {
 	}
 
 	function onListening() {
-		console.log('Listening on ' + 'Port ' + config.port);
+		console.log('Listening on ' + 'Port ' + 3000);
 	}
