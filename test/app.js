@@ -41,9 +41,9 @@ server.on('listening', onListening);
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connection', function(socket) {
-	gpio.setup(7, gpio.DIR_IN, readInput);
+	
 		setInterval(function(){
-
+			gpio.setup(7, gpio.DIR_IN, readInput);
 			function readInput() {
 				gpio.read(7, function(err, value) {
 					socket.emit('value', value);
